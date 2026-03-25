@@ -50,31 +50,31 @@ Take a few minutes to read through the code before starting the challenges.
 
 Your interviewer will assign one or more of the following. Read the existing code carefully before you begin.
 
-### 1. Bug hunt
+### 1. Bug hunt (~15 min)
 
 The app has a couple of bugs. Use the app, read the code, and find them. Explain what causes each bug and fix it.
 
-### 2. Task counter in page title
+### 2. Task counter in page title (~5 min)
 
 Show the number of active tasks in the browser tab title (e.g. `(3) Task Manager`). The title should update automatically as tasks change.
 
-### 3. "Complete All" toggle
+### 3. "Complete All" toggle (~10 min)
 
 Add a button that marks every active task as completed. If all tasks are already completed, the button should mark them all as active again.
 
-### 4. Edit a task inline
+### 4. Edit a task inline (~20 min)
 
 Allow the user to click a task title to rename it. Show an input field on click, and save changes on Enter or blur.
 
-### 5. Write tests
+### 5. Write tests (~20 min)
 
 The project includes Vitest and Testing Library. Add meaningful tests for the app's core logic: adding a task, toggling completion, filtering, and search.
 
-### 6. Custom `useTasks` hook
+### 6. Custom `useTasks` hook (~20 min)
 
 Extract all task state and handlers from `App.tsx` into a reusable `useTasks` hook. The component should only handle rendering.
 
-### 7. Dark / light mode toggle
+### 7. Dark / light mode toggle (~15 min)
 
 Wire a theme toggle button that switches between light and dark mode by toggling the `dark` class on `<html>`. Persist the user's choice.
 
