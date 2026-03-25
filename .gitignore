@@ -29,3 +29,6 @@ pnpm-debug.log*
 
 # TypeScript cache
 *.tsbuildinfo
+
+# Interviewer guide (do not share with candidates)
+INTERVIEWER_GUIDE.md

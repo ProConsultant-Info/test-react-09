@@ -69,10 +69,8 @@ function App() {
 
   // ─── useEffect: Persist tasks to localStorage whenever they change ───────────
   useEffect(() => {
-    if (!loading) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
-    }
-  }, [tasks, loading])
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
+  }, [tasks])
 
   // ─── useMemo: Derive the visible task list without re-computing on every render
   const filteredTasks = useMemo(() => {
@@ -83,7 +81,7 @@ function App() {
         return true
       })
       .filter((task) =>
-        task.title.toLowerCase().includes(search.toLowerCase())
+        task.title.toLowerCase().includes(search)
       )
       .sort((a, b) => {
         // Sort by priority (high > medium > low) then by creation time (newest first)
