@@ -1,21 +1,21 @@
-import { useState, useEffect, useMemo } from "react"
-import { CheckSquare, Trash2 } from "lucide-react"
+import { useState, useEffect, useMemo } from "react";
+import { CheckSquare, Trash2 } from "lucide-react";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
-import { Skeleton } from "@/components/ui/skeleton"
-import { AddTaskForm } from "@/components/AddTaskForm"
-import { TaskItem } from "@/components/TaskItem"
-import { TaskFilters } from "@/components/TaskFilters"
-import type { Task, FilterType, Priority } from "@/types"
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
+import { AddTaskForm } from "@/components/AddTaskForm";
+import { TaskItem } from "@/components/TaskItem";
+import { TaskFilters } from "@/components/TaskFilters";
+import type { Task, FilterType, Priority } from "@/types";
 
-const STORAGE_KEY = "react-tasks"
+const STORAGE_KEY = "react-tasks";
 
 const INITIAL_TASKS: Task[] = [
   {
@@ -46,63 +46,61 @@ const INITIAL_TASKS: Task[] = [
     priority: "medium",
     createdAt: Date.now(),
   },
-]
+];
 
 function App() {
   // ─── State ──────────────────────────────────────────────────────────────────
-  const [tasks, setTasks] = useState<Task[]>([])
-  const [filter, setFilter] = useState<FilterType>("all")
-  const [search, setSearch] = useState("")
-  const [loading, setLoading] = useState(true)
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const [filter, setFilter] = useState<FilterType>("all");
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
 
   // ─── useEffect: Load tasks from localStorage on mount ───────────────────────
   useEffect(() => {
     // Simulate an async data-load (like fetching from an API)
     const timer = setTimeout(() => {
-      const stored = localStorage.getItem(STORAGE_KEY)
-      setTasks(stored ? (JSON.parse(stored) as Task[]) : INITIAL_TASKS)
-      setLoading(false)
-    }, 600)
+      const stored = localStorage.getItem(STORAGE_KEY);
+      setTasks(stored ? (JSON.parse(stored) as Task[]) : INITIAL_TASKS);
+      setLoading(false);
+    }, 600);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   // ─── useEffect: Persist tasks to localStorage whenever they change ───────────
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
-  }, [tasks])
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+  }, [tasks]);
 
   // ─── useMemo: Derive the visible task list without re-computing on every render
   const filteredTasks = useMemo(() => {
     return tasks
       .filter((task) => {
-        if (filter === "active") return !task.completed
-        if (filter === "completed") return task.completed
-        return true
+        if (filter === "active") return !task.completed;
+        if (filter === "completed") return task.completed;
+        return true;
       })
-      .filter((task) =>
-        task.title.toLowerCase().includes(search)
-      )
+      .filter((task) => task.title.toLowerCase().includes(search))
       .sort((a, b) => {
         // Sort by priority (high > medium > low) then by creation time (newest first)
         const priorityOrder: Record<Priority, number> = {
           high: 0,
           medium: 1,
           low: 2,
-        }
-        const pDiff = priorityOrder[a.priority] - priorityOrder[b.priority]
-        return pDiff !== 0 ? pDiff : b.createdAt - a.createdAt
-      })
-  }, [tasks, filter, search])
+        };
+        const pDiff = priorityOrder[a.priority] - priorityOrder[b.priority];
+        return pDiff !== 0 ? pDiff : b.createdAt - a.createdAt;
+      });
+  }, [tasks, filter, search]);
 
   const activeCount = useMemo(
     () => tasks.filter((t) => !t.completed).length,
-    [tasks]
-  )
+    [tasks],
+  );
   const completedCount = useMemo(
     () => tasks.filter((t) => t.completed).length,
-    [tasks]
-  )
+    [tasks],
+  );
 
   // ─── Event handlers ─────────────────────────────────────────────────────────
   const handleAddTask = (title: string, priority: Priority) => {
@@ -112,25 +110,25 @@ function App() {
       completed: false,
       priority,
       createdAt: Date.now(),
-    }
-    setTasks((prev) => [newTask, ...prev])
-  }
+    };
+    setTasks((prev) => [newTask, ...prev]);
+  };
 
   const handleToggle = (id: string) => {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    )
-  }
+        task.id === id ? { ...task, completed: !task.completed } : task,
+      ),
+    );
+  };
 
   const handleDelete = (id: string) => {
-    setTasks((prev) => prev.filter((task) => task.id !== id))
-  }
+    setTasks((prev) => prev.filter((task) => task.id !== id));
+  };
 
   const handleClearCompleted = () => {
-    setTasks((prev) => prev.filter((task) => !task.completed))
-  }
+    setTasks((prev) => prev.filter((task) => !task.completed));
+  };
 
   // ─── Render ─────────────────────────────────────────────────────────────────
   return (
@@ -185,10 +183,10 @@ function App() {
                   {search
                     ? `No tasks matching "${search}"`
                     : filter === "completed"
-                    ? "No completed tasks yet"
-                    : filter === "active"
-                    ? "All tasks completed! 🎉"
-                    : "No tasks yet — add one above!"}
+                      ? "No completed tasks yet"
+                      : filter === "active"
+                        ? "All tasks completed! 🎉"
+                        : "No tasks yet — add one above!"}
                 </div>
               ) : (
                 filteredTasks.map((task) => (
@@ -228,7 +226,7 @@ function App() {
         </p>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
