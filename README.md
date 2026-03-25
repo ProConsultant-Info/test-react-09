@@ -1,6 +1,8 @@
 # React Live Coding Test: Task Manager
 
 > A hands-on React challenge for junior/intermediate developers.
+>
+> **Duration:** 1 hour. Take a few minutes to read the code, then your interviewer will assign challenges from the list below. You are free to use any tools you like: browser, documentation, AI assistants, etc.
 
 ![Task Manager Screenshot](https://github.com/user-attachments/assets/94403037-9b70-41c4-b64d-9fcc181bceea)
 
