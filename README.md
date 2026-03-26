@@ -55,6 +55,7 @@ Your interviewer will assign one or more of the following. Read the existing cod
 The app has a couple of bugs. Use the app, read the code, and find them. Explain what causes each bug and fix it.
 
 A. The initial tasks defined in the code are never displayed.
+
 B. If we type "React" in the Search input, we should see the initial task with "React" in its name, but it does not appear.
 
 ### 2. Task counter in page title (~5 min)
