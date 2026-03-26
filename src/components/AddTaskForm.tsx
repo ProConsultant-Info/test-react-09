@@ -1,36 +1,36 @@
-import { useState, type KeyboardEvent } from "react"
-import { Plus } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useState, type KeyboardEvent } from "react";
+import { Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import type { Priority } from "@/types"
+} from "@/components/ui/select";
+import type { Priority } from "@/types";
 
 interface AddTaskFormProps {
-  onAdd: (title: string, priority: Priority) => void
+  onAdd: (title: string, priority: Priority) => void;
 }
 
 export function AddTaskForm({ onAdd }: AddTaskFormProps) {
-  const [title, setTitle] = useState("")
-  const [priority, setPriority] = useState<Priority>("medium")
+  const [title, setTitle] = useState("");
+  const [priority, setPriority] = useState<Priority>("medium");
 
   const handleSubmit = () => {
-    const trimmed = title.trim()
-    if (!trimmed) return
-    onAdd(trimmed, priority)
-    setTitle("")
-    setPriority("medium")
-  }
+    const trimmed = title.trim();
+    if (!trimmed) return;
+    onAdd(trimmed, priority);
+    setTitle("");
+    setPriority("medium");
+  };
 
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") handleSubmit()
-  }
+    if (e.key === "Enter") handleSubmit();
+  };
 
   return (
     <div className="space-y-3">
@@ -62,10 +62,14 @@ export function AddTaskForm({ onAdd }: AddTaskFormProps) {
           </Select>
         </div>
       </div>
-      <Button onClick={handleSubmit} className="w-full sm:w-auto" disabled={!title.trim()}>
+      <Button
+        onClick={handleSubmit}
+        className="w-full sm:w-auto"
+        disabled={!title.trim()}
+      >
         <Plus className="h-4 w-4" />
         Add Task
       </Button>
     </div>
-  )
+  );
 }

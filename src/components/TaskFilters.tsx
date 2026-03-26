@@ -1,23 +1,23 @@
-import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import type { FilterType } from "@/types"
+import { Search } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { FilterType } from "@/types";
 
 interface TaskFiltersProps {
-  filter: FilterType
-  search: string
-  onFilterChange: (filter: FilterType) => void
-  onSearchChange: (search: string) => void
-  activeCount: number
-  completedCount: number
+  filter: FilterType;
+  search: string;
+  onFilterChange: (filter: FilterType) => void;
+  onSearchChange: (search: string) => void;
+  activeCount: number;
+  completedCount: number;
 }
 
 const filters: { value: FilterType; label: string }[] = [
   { value: "all", label: "All" },
   { value: "active", label: "Active" },
   { value: "completed", label: "Completed" },
-]
+];
 
 export function TaskFilters({
   filter,
@@ -52,12 +52,12 @@ export function TaskFilters({
               {value === "active"
                 ? activeCount
                 : value === "completed"
-                ? completedCount
-                : activeCount + completedCount}
+                  ? completedCount
+                  : activeCount + completedCount}
             </span>
           </Button>
         ))}
       </div>
     </div>
-  )
+  );
 }

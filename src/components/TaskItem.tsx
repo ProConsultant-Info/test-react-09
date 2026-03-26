@@ -1,24 +1,24 @@
-import { Trash2 } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
-import type { Task } from "@/types"
+import { Trash2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import type { Task } from "@/types";
 
 interface TaskItemProps {
-  task: Task
-  onToggle: (id: string) => void
-  onDelete: (id: string) => void
+  task: Task;
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
 const priorityConfig = {
   low: { label: "Low", variant: "secondary" as const, icon: "🟢" },
   medium: { label: "Medium", variant: "outline" as const, icon: "🟡" },
   high: { label: "High", variant: "destructive" as const, icon: "🔴" },
-}
+};
 
 export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
-  const { label, variant, icon } = priorityConfig[task.priority]
+  const { label, variant, icon } = priorityConfig[task.priority];
 
   return (
     <div
@@ -26,7 +26,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
         "flex items-center gap-3 rounded-lg border p-3 transition-colors",
         task.completed
           ? "bg-muted/40 border-muted"
-          : "bg-card hover:bg-accent/20"
+          : "bg-card hover:bg-accent/20",
       )}
     >
       <Checkbox
@@ -39,7 +39,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
         htmlFor={`task-${task.id}`}
         className={cn(
           "flex-1 cursor-pointer text-sm",
-          task.completed && "line-through text-muted-foreground"
+          task.completed && "line-through text-muted-foreground",
         )}
       >
         {task.title}
@@ -58,5 +58,5 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
         <Trash2 className="h-4 w-4" />
       </Button>
     </div>
-  )
+  );
 }
