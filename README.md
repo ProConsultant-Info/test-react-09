@@ -8,15 +8,15 @@
 
 ## Tech Stack
 
-| Tool | Purpose |
-|------|---------|
-| **React 19** | UI framework |
-| **TypeScript** | Type safety |
-| **Vite** | Build tool & dev server |
-| **Tailwind CSS v3** | Utility-first styling |
-| **shadcn/ui** | Accessible component library (Radix UI + cva) |
-| **Lucide React** | Icon library |
-| **Vitest** | Unit testing framework |
+| Tool                | Purpose                                       |
+| ------------------- | --------------------------------------------- |
+| **React 19**        | UI framework                                  |
+| **TypeScript**      | Type safety                                   |
+| **Vite**            | Build tool & dev server                       |
+| **Tailwind CSS v3** | Utility-first styling                         |
+| **shadcn/ui**       | Accessible component library (Radix UI + cva) |
+| **Lucide React**    | Icon library                                  |
+| **Vitest**          | Unit testing framework                        |
 
 ---
 
@@ -53,6 +53,9 @@ Your interviewer will assign one or more of the following. Read the existing cod
 ### 1. Bug hunt (~15 min)
 
 The app has a couple of bugs. Use the app, read the code, and find them. Explain what causes each bug and fix it.
+
+A. The initial tasks defined in the code are never displayed.
+B. If we type "React" in the Search input, we should see the initial task with "React" in its name, but it does not appear.
 
 ### 2. Task counter in page title (~5 min)
 
